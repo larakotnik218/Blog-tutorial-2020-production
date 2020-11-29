@@ -4,3 +4,8 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true
 end
+
+def self.posted
+  where('scheduled_for: < ? OR scheduled_for IS NULL', DateTime.now )
+
+end
